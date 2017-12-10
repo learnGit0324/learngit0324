@@ -13,6 +13,9 @@ public class CellGame {
 		//drop
 		cell.drop();
 		printCell(cell);
+		//move
+		cell.moveLeft(2);
+		printCell(cell);
 	}
 
 	private static void printCell(Cell cell) {
