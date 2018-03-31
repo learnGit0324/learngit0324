@@ -8,7 +8,10 @@ public class Num2RmbAdv {
 		// TODO Auto-generated method stub
 		Num2RmbAdv rn = new Num2RmbAdv();
 		System.out.println(rn.toHanStr("236711125"));
+		System.out.println(rn.toHanStr("000001010"));
+		System.out.println(rn.toHanStr("000000000"));
 		System.out.println(rn.toHanStr("200000000"));
+		System.out.println(rn.toHanStr("002000000"));
 	}
 	//目前针对四位数字的字符串能够实现自动转换那么对于超过四位，比如 7位 9位这样的数字字符串呢？？ 
 	//由于我们不知道用户输入的字符串的长度具体是多少就要针对所有可能的长度进行分类判断 
@@ -122,12 +125,30 @@ public class Num2RmbAdv {
 			}
 		}
 		if(partNum == 3){
-			result = resultFirst + "亿" + resultSecond + "万" + resultThird + "元";
 			//如果第二节和第三节均全为0  
-			if(Integer.parseInt(numStr.substring(firstPartLen, (firstPartLen + 4)))== 0 
+			if(Integer.parseInt(numStr.substring(0, firstPartLen))== 0
+					&& Integer.parseInt(numStr.substring(firstPartLen, (firstPartLen + 4)))== 0 
+					&& Integer.parseInt(numStr.substring((firstPartLen+4), strLen)) == 0){
+				result = hanArr[0];
+			}
+			//如果第一节 第二节全为0
+			else if(Integer.parseInt(numStr.substring(0, firstPartLen))== 0
+					&& Integer.parseInt(numStr.substring(firstPartLen, (firstPartLen + 4)))== 0){
+				result = resultThird + "元";
+			}
+			//如果第一节 第三节全为0
+			else if(Integer.parseInt(numStr.substring(0, firstPartLen))== 0
+					&& Integer.parseInt(numStr.substring((firstPartLen+4), strLen)) == 0){
+				result =  resultSecond + "万";
+			}
+			//如果第二节 第三节全为0
+			else if(Integer.parseInt(numStr.substring(firstPartLen, (firstPartLen + 4)))== 0 
 					&& Integer.parseInt(numStr.substring((firstPartLen+4), strLen)) == 0){
 				result = resultFirst + "亿";
 			}
+			else
+			result = resultFirst + "亿" + resultSecond + "万" + resultThird + "元";
+
 		}
 		return  result;
 	}
