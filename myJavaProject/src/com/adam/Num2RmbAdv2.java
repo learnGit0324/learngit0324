@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class Num2RmbAdv2 {
 	/**
+	 * 注意：：输入的数字整数部分不能全都为0 否则会输出 零元
 	 * 将浮点数转换成人民币读法字符串 例如： 1006.333一千零陆元叁角叁分
 	 * @param args 浮点数
 	 * @return  人民币读法字符串 
@@ -15,7 +16,7 @@ public class Num2RmbAdv2 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Num2RmbAdv2 nb = new Num2RmbAdv2();
-		double num = 100001000.173; //当第二节全为0时 会输出 “零万” 应该不输出
+		double num = 0100001000.173; //当第二节全为0时 会输出 “零万” 应该不输出
 		arr = nb.divide(num);
 //		System.out.println(Arrays.toString(nb.divide(num))); //输出 [1006, 33]
 		//nb.toHanStr(num);
@@ -198,7 +199,6 @@ public class Num2RmbAdv2 {
 //		System.out.println(resultLing);
 		//将整数和小数部分合并
 		return zhengResult + resultLing;
-
 	}
 
 }

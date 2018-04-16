@@ -7,11 +7,11 @@ public class Num2RmbAdv {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Num2RmbAdv rn = new Num2RmbAdv();
-		System.out.println(rn.toHanStr("236711125"));
+		System.out.println(rn.toHanStr("200001125")); //此case有bug 贰亿零万壹千壹百贰十伍元
 		System.out.println(rn.toHanStr("000001010"));
 		System.out.println(rn.toHanStr("000000000"));
 		System.out.println(rn.toHanStr("200000000"));
-		System.out.println(rn.toHanStr("002000000"));
+		System.out.println(rn.toHanStr("123456789"));
 	}
 	//目前针对四位数字的字符串能够实现自动转换那么对于超过四位，比如 7位 9位这样的数字字符串呢？？ 
 	//由于我们不知道用户输入的字符串的长度具体是多少就要针对所有可能的长度进行分类判断 
@@ -125,7 +125,7 @@ public class Num2RmbAdv {
 			}
 		}
 		if(partNum == 3){
-			//如果第二节和第三节均全为0  
+			//如果三节均全为0  
 			if(Integer.parseInt(numStr.substring(0, firstPartLen))== 0
 					&& Integer.parseInt(numStr.substring(firstPartLen, (firstPartLen + 4)))== 0 
 					&& Integer.parseInt(numStr.substring((firstPartLen+4), strLen)) == 0){
